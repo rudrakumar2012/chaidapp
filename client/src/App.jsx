@@ -24,7 +24,7 @@ function App() {
         );
       }
     };
-  }, []);
+  },[account]);
 
   function handleAccountsChanged(accounts) {
     if (accounts.length > 0 && account !== accounts[0]) {
@@ -66,7 +66,7 @@ function App() {
   }
 
   return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100 text-center font-serif text-lg">
+      <div>
         {isConnected ? (
           <Connected account={account} state={state} />
         ) : (

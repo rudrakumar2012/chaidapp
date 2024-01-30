@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { ethers } from "ethers";
 
 const Connected = (props) => {
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
   const buyChai = async (event) => {
     event.preventDefault();
     const { contract } = props.state;
@@ -18,13 +22,19 @@ const Connected = (props) => {
       <form onSubmit={buyChai} className="w-full max-w-md">
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
-          <input id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></input>
+          <input id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={name} onChange={(e) => setName(e.target.value)}
+          ></input>
         </div>
         <div className="mb-4">
           <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message:</label>
-          <input id="message" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></input>
+          <input id="message" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={message} onChange={(e) => setMessage(e.target.value)}
+          ></input>
         </div>
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Pay</button>
+        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          disabled={!name || !message}
+        >Pay</button>
       </form>
     </div>
   );
