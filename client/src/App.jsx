@@ -66,15 +66,13 @@ function App() {
   }
 
   return (
-    <>
-      <div className="App">
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 text-center font-serif text-lg">
         {isConnected ? (
           <Connected account={account} state={state} />
         ) : (
           <Login connectWallet={conncetToMetamask} />
         )}
       </div>
-    </>
   );
 }
 
