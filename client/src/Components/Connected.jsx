@@ -17,7 +17,8 @@ const Connected = (props) => {
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-center font-sans text-lg">
-      <h1 className="my-4">You are connected to Metamask</h1>
+      <img src="/images/chai-logo.png" alt="Chai Logo" className="w-32 h-32 mx-auto my-4"/>
+      <h1 className="my-4">Welcome to Chai Dapp</h1>
       <p className="mb-4">Metamask Account: {props.account}</p>
       <form onSubmit={buyChai} className="w-full max-w-md">
         <div className="mb-4">
