@@ -3,6 +3,7 @@ import abi from "./contractJson/chai.json";
 import { ethers } from "ethers";
 import Login from "./Components/Login";
 import Connected from "./Components/Connected";
+import Memos from "./Components/Memos";
 
 function App() {
   const [provider, setProvider] = useState(null);
@@ -24,7 +25,7 @@ function App() {
         );
       }
     };
-  },[account]);
+  },[provider]);
 
   function handleAccountsChanged(accounts) {
     if (accounts.length > 0 && account !== accounts[0]) {
@@ -68,7 +69,10 @@ function App() {
   return (
       <div>
         {isConnected ? (
+        <div>
           <Connected account={account} state={state} />
+          <Memos state={state}/>
+        </div>
         ) : (
           <Login connectWallet={conncetToMetamask} />
         )}
