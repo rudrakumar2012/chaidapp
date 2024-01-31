@@ -3,7 +3,6 @@ import abi from "./contractJson/chai.json";
 import { ethers } from "ethers";
 import Login from "./Components/Login";
 import Connected from "./Components/Connected";
-import Memos from "./Components/Memos";
 
 function App() {
   const [provider, setProvider] = useState(null);
@@ -59,7 +58,7 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const contractAddress = "0x52f235233485aC39399D5A1B19cB1aDAb176aEee";
     const contractABI = abi.abi;
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
     setState({ contract });
@@ -69,10 +68,7 @@ function App() {
   return (
       <div>
         {isConnected ? (
-        <div>
           <Connected account={account} state={state} />
-          <Memos state={state}/>
-        </div>
         ) : (
           <Login connectWallet={conncetToMetamask} />
         )}
